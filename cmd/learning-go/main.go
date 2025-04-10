@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/Darsh2126/learning-go/internal/config"
+	"github.com/Darsh2126/learning-go/internal/handlers/student"
 )
 
 func main() {
@@ -21,9 +22,7 @@ func main() {
 	// setup router
 	router := http.NewServeMux()
 
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcome to learning go"))
-	})
+	router.HandleFunc("POST /api/students", student.Create())
 
 	// setup server
 	server := http.Server{
